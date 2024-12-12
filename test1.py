@@ -8,7 +8,7 @@ class TestCalculaMedia(unittest.TestCase):
         self.assertEqual(resultado, "Hola Daniel")
 
     def test_2(self):
-        resultado = saludar("Jua")
+        resultado = saludar("Juan")
         self.assertEqual(resultado, "Hola Juan")
 
 if __name__ == "__main__":
