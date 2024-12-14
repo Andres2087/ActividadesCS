@@ -1,6 +1,6 @@
 name: Hola Mundo Workflow
 
-on: 
+on:
   push:
     branches:
       - main
@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Saludar
-      run: echo "Hola Mundo desde GitHub Actions!"
+        run: echo "¡Hola Mundo desde GitHub Actions!"
