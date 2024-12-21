@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -45,15 +44,29 @@ class AnimeFLVTest(unittest.TestCase):
         search.clear()
         search.send_keys("Naruto")
         search.submit()
-        sleep(5) 
-        results = browser.find_elements(By.CLASS_NAME, "ListAnimes")  # Ajusta la clase si es diferente
+        sleep(2)
+        results = browser.find_elements(By.CSS_SELECTOR, ".ListAnimes.AX.Rows.A03.C02.D02")  
         self.assertGreater(len(results), 0, "No se encontraron resultados para 'Naruto'.")
 
+    def test_title_text(self):
+        browser = self.browser
+        browser.get("https://www3.animeflv.net/")  
+        title_element = browser.find_element(By.CSS_SELECTOR, "div.Container h1")
+        title_text = title_element.text.strip()
+        expected_text = "AnimeFLV tu fuente de anime online gratis en HD"
+        self.assertEqual(title_text, expected_text, f"El texto del título no coincide. Se encontró: '{title_text}'")
         
-
-       
-        
-
+    def test_directorio_anime_navigation(self):
+        browser = self.browser
+        browser.get("https://www3.animeflv.net/")  # URL de la página inicial
+        directorio_anime_link = browser.find_element(By.XPATH, "/html/body/div[2]/header/div/div/div/div[2]/nav/ul/li[2]/a")
+        directorio_anime_link.send_keys(Keys.ENTER)
+        sleep(5)
+        title_element = browser.find_element(By.XPATH, "/html/body/div[2]/div/div/div/h1")
+        actual_text = title_element.text.strip()
+        expected_text = "Lista completa de Animes"
+        self.assertEqual(actual_text, expected_text, f"El texto del título no coincide. Se encontró: '{actual_text}'")
+    
     def tearDown(self):
         self.browser.quit()
 
