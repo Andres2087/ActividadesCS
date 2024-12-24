@@ -26,6 +26,6 @@ jobs:
         python -m pip install selenium
     - name: Run Unit Test
       run: |
-        python -m unittest discover -s Actividad5
+        python -m unittest discover -s Semana2/pruebas_Actividad1
     - name: Ready for deploy
       run: echo "Listo"
