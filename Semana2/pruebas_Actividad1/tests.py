@@ -58,7 +58,7 @@ class AnimeFLVTest(unittest.TestCase):
         
     def test_directorio_anime_navigation(self):
         browser = self.browser
-        browser.get("https://www3.animeflv.net/")  # URL de la página inicial
+        browser.get("https://www3.animeflv.net/")  
         directorio_anime_link = browser.find_element(By.XPATH, "/html/body/div[2]/header/div/div/div/div[2]/nav/ul/li[2]/a")
         directorio_anime_link.send_keys(Keys.ENTER)
         sleep(5)
